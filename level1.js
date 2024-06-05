@@ -3,9 +3,17 @@ export function evaluatePrice(input) {
     let groupPrice = input[1];
     let person = input[2];
 
+    if(groupPrice < 0 ||individualPrice < 0 || person < 0){
+        return "There are invalid input";
+    }
+
     let individualPriceCalcul = individualPrice * person;
     let groupPriceCalcul = groupPrice * (numRoundMultiple(person, 10) / 10);
 
+
+    if(numRoundMultiple(person,10) < person){
+        return individualPriceCalcul;
+    }
     if (individualPriceCalcul > groupPriceCalcul) {
         return groupPriceCalcul;
     }
@@ -15,9 +23,7 @@ export function evaluatePrice(input) {
     if (individualPriceCalcul == groupPriceCalcul) {
         return individualPriceCalcul;
     }
-    if(groupPrice <0 ||individualPrice < 0 || person <0){
-        return "There are invalid input"
-    }
+    
 }
 
 /**
@@ -30,3 +36,6 @@ let numRoundMultiple = function (x, y) {
 }
 
 console.log(evaluatePrice([6, 50, 26]));
+console.log(evaluatePrice([-6, -50, -26]));
+console.log(evaluatePrice([2, 20, 12]));
+console.log(numRoundMultiple(12, 10));
