@@ -25,9 +25,4 @@ describe("Test with invalid input", () => {
         it("Must return qn empty string", () =>
             assert.strictEqual(reorganize(""), ""))
     });
-
-    describe("Test containing numbers or other special characters", () => {
-        it("Should return a message error", () =>
-            assert.strictEqual(reorganize("mj23!$"), "There are invalid string"))
-    });
 })

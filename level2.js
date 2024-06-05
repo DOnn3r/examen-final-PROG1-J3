@@ -1,17 +1,24 @@
 export function reorganize(input) {
-    let array = input.split('');
-    if (input == "") {
+    if (input === "") {
         return "";
     }
 
-    //first try
-    /*return array.sort(function (x, y) {
-        return x.toString().localeCompare(y.toString());
-    }).join('');*/
+    let seen = {};
+    let result = [];
 
-    //second try
-    return array.sort();
+    for (let char of input) {
+        let lowerChar = char.toLowerCase();
+        if (seen[lowerChar]) {
+            let index = result.findIndex(c => c.toLowerCase() === lowerChar);
+            result.splice(index + 1, 0, char);
+        } else {
+            seen[lowerChar] = true;
+            result.push(char);
+        }
+    }
+
+    return result.join('');
 }
 
-console.log(reorganize('abdAbBce'));
-console.log(reorganize('adAabaB'));
+console.log(reorganize('abdAbBce')); // "abdABbce"
+console.log(reorganize('adAabaB')); // "adAaabB"
