@@ -9,11 +9,14 @@ export function evaluatePrice(input) {
     if (individualPriceCalcul > groupPriceCalcul) {
         return groupPriceCalcul;
     }
-    else if (individualPriceCalcul < groupPriceCalcul) {
+    if (individualPriceCalcul < groupPriceCalcul) {
         return individualPriceCalcul;
     }
     if (individualPriceCalcul == groupPriceCalcul) {
         return individualPriceCalcul;
+    }
+    if(groupPrice <0 ||individualPrice < 0 || person <0){
+        return "There are invalid input"
     }
 }
 
